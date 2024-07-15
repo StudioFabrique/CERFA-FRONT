@@ -1,11 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./vues/rootlayout";
 import { Authentification } from "./vues/Authentification";
-import { ListeContratCerfa } from "./vues/Cerfa/ListeContratCerfa";
+import { ListeContratCerfa } from "./vues/CFA/ListeContratCFA";
+import { ListeContratEmployeur } from "./vues/Employeur/ListeContratEmployeur";
 import { Toaster } from "react-hot-toast";
-import { ContratUnsignedCerfa } from "./vues/Cerfa/ContratUnsignedCerfa";
-import { ListeContratCerfasigned } from "./components/Cerfa/ListeContratsigned";
-import { ContratsignedCerfa } from "./vues/Cerfa/ContratsignedCerfa";
+import { ContratUnsignedCerfa } from "./vues/CFA/ContratUnsignedCFA";
+import { ListeContratCerfasigned } from "./components/CFA/ListeContratsigned";
+import { ContratsignedCerfa } from "./vues/CFA/ContratsignedCFA";
+import CreationcontratApp from "./vues/CFA/CreationContratAppren";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,12 @@ const router = createBrowserRouter([
       {index:true, element:<ListeContratCerfa />}
     ]
   },
+  {path:"/accueil-employeur",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<ListeContratEmployeur />}
+    ]
+  },
   {
     path: "/contrat-cerfa/unsigned",
     element: <RootLayout />,
@@ -34,6 +42,13 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {index:true, element:<ContratsignedCerfa />}
+    ]
+  },
+  {
+    path: "/nouveau-contrat/Apprentissage",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<CreationcontratApp />}
     ]
   }
 ]);

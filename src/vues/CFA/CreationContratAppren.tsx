@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 const steps = ['Entrez les adresses emails', 'Partie 1 du formulaire', 'Partie 2 du formulaire'];
 
-export default function HorizontalLinearStepper() {
+export default function CreationcontratApp() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
 
@@ -55,7 +55,7 @@ export default function HorizontalLinearStepper() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', height: '100%'  }}>
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps: { completed?: boolean } = {};
@@ -91,7 +91,7 @@ export default function HorizontalLinearStepper() {
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button
+            <Button 
               color="inherit"
               disabled={activeStep === 0}
               onClick={handleBack}

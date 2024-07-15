@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { CircleCheck, HardDriveDownload } from 'lucide-react';
 import token from "../../services/token-service"
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Tooltip } from '@mui/material';
 
 interface Contrat{
     id: number,
@@ -155,9 +156,15 @@ export function ListeContratCerf() {
                                 {contract.type_contrat}
                             </td>
                             <td className='px-6 pt-7 flex justify-center'>
-                                <CircleCheck color={contract.signature_apprenti ? "#4aea10" : "#000000"} />
-                                <CircleCheck color={contract.signature_employeur ? "#4aea10" : "#000000"}/>
-                                <CircleCheck color={contract.signature_cfa ? "#4aea10" : "#000000"}/>
+                                <Tooltip title="Signature Apprenti">
+                                    <CircleCheck color={contract.signature_apprenti ? "#4aea10" : "#000000"} />
+                                </Tooltip>
+                                <Tooltip title="Signature Employeur">
+                                    <CircleCheck color={contract.signature_employeur ? "#4aea10" : "#000000"} />
+                                </Tooltip>
+                                <Tooltip title="Signature CFA">
+                                    <CircleCheck color={contract.signature_cfa ? "#4aea10" : "#000000"} />
+                                </Tooltip>
                             </td>
                             <td className='px-6 py-4 text-blue-700 font-bold text-lg'>
                                 <button onClick={ () => delContract(contract.id)}>Supprimer</button>

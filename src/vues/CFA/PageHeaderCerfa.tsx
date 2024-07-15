@@ -39,7 +39,7 @@ export function PageHeaderCerfa(){
             toast.error("Votre session a expiré !", {duration: 4000,className:"bg-grey-200 font-bold rounded-xl text-blue-600"})
             throw new Error('No token found');
         }
-        const response = await axios.get(`${API_URL}/header/cerfa`, {
+        const response = await axios.get(`${API_URL}/header/cfa`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },

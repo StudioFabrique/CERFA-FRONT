@@ -3,8 +3,9 @@ import { CircleCheck, HardDriveDownload } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import token from "../../services/token-service";
+import { Tooltip } from "@mui/material";
 
-interface Contratsigned{
+interface ContratUnsigned{
     id: number,
     nom_usage: string,
     prenom:string,
@@ -17,12 +18,12 @@ interface Contratsigned{
 
 }
 
-export function ListeContratCerfasigned(){
+export function ListeContratCerfaUnsigned() {
 
-    const [contractssigned, setContractssigned] = useState<Contratsigned []>([]);
+    const [contractsUsigned, setContractsUsigned] = useState<ContratUnsigned []>([]);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchContractssigned = async () => {
+    const fetchContractsUsigned = async () => {
         try {
             const API_URL = "http://localhost:8000";
             const user = localStorage.getItem('user');
@@ -37,7 +38,7 @@ export function ListeContratCerfasigned(){
                 toast.error("Votre session a expiré !", {duration: 4000,className:"bg-grey-200 font-bold rounded-xl text-blue-600"})
                 throw new Error('No token found');
             }
-            const response = await axios.get(`${API_URL}/accueil/contracts/CFAsigned`, {
+            const response = await axios.get(`${API_URL}/accueil/contracts/CFAUnsigned`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
@@ -48,7 +49,7 @@ export function ListeContratCerfasigned(){
                 throw new Error('Failed to fetch contracts');
             }
             
-            setContractssigned(response.data);
+            setContractsUsigned(response.data);
             console.log(response.data);
         } catch (error: any) {
             if(error.response && error.response.status === 401){
@@ -62,10 +63,10 @@ export function ListeContratCerfasigned(){
     };
 
     useEffect(() => {
-        fetchContractssigned();
+        fetchContractsUsigned();
         
     }, []);
-
+    
     const delContract = async (id: number) => {
         try {
             const API_URL = "http://localhost:8000";
@@ -75,7 +76,7 @@ export function ListeContratCerfasigned(){
                 },
             });
             if (response.status === 200) {
-                setContractssigned(contractssigned.filter(contractsUsigned => contractsUsigned.id !== id));
+                setContractsUsigned(contractsUsigned.filter(contractsUsigned => contractsUsigned.id !== id));
                 toast.success("Contrat supprimé avec succès !");
             } else {
                 throw new Error('Failed to delete contract');
@@ -127,39 +128,45 @@ return (
                     </tr>
                 </thead>
                 <tbody>
-                    {contractssigned.map(contractssigned => (
-                    <tr key={contractssigned.id} className='border-t-2 align-text text-center'>
+                    {contractsUsigned.map(contractsUsigned => (
+                    <tr key={contractsUsigned.id} className='border-t-2 align-text text-center'>
                         <td className='px-6 py-4'>
                         <input  type="checkbox" className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"></input>
                         </td>
                         <td className='px-6 py-4'>
-                            {contractssigned.nom_usage}
+                            {contractsUsigned.nom_usage}
                         </td>
                         <td className='px-6 py-4'>
-                            {contractssigned.prenom}
+                            {contractsUsigned.prenom}
                         </td>
                         <td className='px-6 py-4'>
-                            {contractssigned.date_naissance}
-                        </td>
-                        <td className='px-6 py-4'>
-                            
+                            {contractsUsigned.date_naissance}
                         </td>
                         <td className='px-6 py-4'>
                             
                         </td>
                         <td className='px-6 py-4'>
-                            {contractssigned.nom_entreprise}
+                            
                         </td>
                         <td className='px-6 py-4'>
-                            {contractssigned.type_contrat}
+                            {contractsUsigned.nom_entreprise}
+                        </td>
+                        <td className='px-6 py-4'>
+                            {contractsUsigned.type_contrat}
                         </td>
                         <td className='px-6 pt-7 flex justify-center'>
-                            <CircleCheck color={contractssigned.signature_apprenti ? "#4aea10" : "#000000"} />
-                            <CircleCheck color={contractssigned.signature_employeur ? "#4aea10" : "#000000"}/>
-                            <CircleCheck color={contractssigned.signature_cfa ? "#4aea10" : "#000000"}/>
+                            <Tooltip title="Signature Apprenti">
+                                <CircleCheck color={contractsUsigned.signature_apprenti ? "#4aea10" : "#000000"} />
+                            </Tooltip>
+                            <Tooltip title="Signature Employeur">
+                                <CircleCheck color={contractsUsigned.signature_employeur ? "#4aea10" : "#000000"}/>
+                            </Tooltip>
+                            <Tooltip title="Sinature CFA">
+                                <CircleCheck color={contractsUsigned.signature_cfa ? "#4aea10" : "#000000"}/>
+                            </Tooltip>
                         </td>
                         <td className='px-6 py-4 text-blue-700 font-bold text-lg'>
-                            <button onClick={ () => delContract(contractssigned.id)}>Supprimer</button>
+                            <button onClick={ () => delContract(contractsUsigned.id)}>Supprimer</button>
                             
                         </td>
                         <td className='px-16 py-4'>

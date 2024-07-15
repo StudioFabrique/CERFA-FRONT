@@ -16,8 +16,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </button>
         <h2 className="text-xl mb-4 font-bold">Choisissez un type de contrat</h2>
         <div className='flex'>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-800 ">Contrat d'apprentissage</button>
-          <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-800 ">Contrat de profesionalisation</button>
+          <a className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-800 text-center" href="/nouveau-contrat/Apprentissage">Contrat d'apprentissage</a>
+          <a className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-800 text-center" href=''>Contrat de profesionalisation</a>
         </div>
       </div>
     </div>

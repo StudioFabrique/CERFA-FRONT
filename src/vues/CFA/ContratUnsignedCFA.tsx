@@ -1,11 +1,12 @@
 import { Search } from "lucide-react";
 import { PageHeaderCerfa } from "./PageHeaderCerfa";
-import { ListeContratCerfasigned } from "../../components/Cerfa/ListeContratsigned";
+import { ListeContratCerfaUnsigned } from "../../components/CFA/ListeContratunsigned";
 
 
-export function ContratsignedCerfa(){
+//Page accueillant les contrats non-signés
+export function ContratUnsignedCerfa(){
     return(
-        <div>
+        <div className="pr-10">
             <PageHeaderCerfa/>
             <div>
                 <div className="border-2 mt-10 rounded-md ml-10">
@@ -13,7 +14,7 @@ export function ContratsignedCerfa(){
                         <Search className="mt-4 ml-5  h-[20px] "/>
                         <input className=" px-5  py-3 text-xl w-[100%]" placeholder="Rechercher un apprentie"></input>
                     </div>     
-                    <ListeContratCerfasigned />    
+                    <ListeContratCerfaUnsigned />    
                 </div>
             </div>
         </div>
