@@ -1,10 +1,10 @@
 import { Search } from "lucide-react";
 import { PageHeaderEmployeur } from "./PageHeaderEmployeur";
-import { ListeContratEmployeu } from "../../components/Employeur/ListeContrat";
+import { ListeContratEmployeursigned } from "../../components/Employeur/ListeContratsigned";
 
 
 //Page accueillant tous les contrats
-export function ListeContratEmployeur(){
+export function ListeContratEmployeurSigned(){
     return(
         <div className="pr-10">
             <PageHeaderEmployeur />
@@ -14,7 +14,7 @@ export function ListeContratEmployeur(){
                         <Search className="mt-4 ml-5  h-[20px] "/>
                         <input className=" px-5  py-3 text-xl w-[100%]" placeholder="Rechercher un Contrat"></input>
                     </div>     
-                  < ListeContratEmployeu/>
+                  < ListeContratEmployeursigned />
                 </div>
             </div>
         </div>

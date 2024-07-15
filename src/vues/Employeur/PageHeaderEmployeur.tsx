@@ -35,7 +35,9 @@ export function PageHeaderEmployeur(){
             toast.error("Votre session a expiré !", {duration: 4000,className:"bg-grey-200 font-bold rounded-xl text-blue-600"})
             throw new Error('No token found');
         }
-        const response = await axios.get(`${API_URL}/header/employeur`, {
+        const id = JSON.parse(user).id
+        console.log(id)
+        const response = await axios.get(`${API_URL}/header/employeur/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
@@ -88,9 +90,9 @@ useEffect(() => {
             <div className="flex justify-center pt-10">
             
                     <a className="border-2 w-[30%] shadow-md ml-10 rounded-2xl flex justify-between transform transition-transform duration-300 hover:-translate-y-2" href='/accueil-employeur'>
-                        <div className="my-5">
-                        <p className="font-bold text-2xl ml-20 mt-8 ">Contrat au total</p>
-                        
+                        <div className="my-5 ">
+                            <p className="font-bold text-2xl ml-20 mt-8 text-center">Contrat au total</p>
+                    
                         </div>
                         <p className="font-bold text-6xl text-blue-800 mt-10 mr-20 mb-10">{nombreContratTotal}</p>
                     </a>

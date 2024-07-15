@@ -5,9 +5,10 @@ import { ListeContratCerfa } from "./vues/CFA/ListeContratCFA";
 import { ListeContratEmployeur } from "./vues/Employeur/ListeContratEmployeur";
 import { Toaster } from "react-hot-toast";
 import { ContratUnsignedCerfa } from "./vues/CFA/ContratUnsignedCFA";
-import { ListeContratCerfasigned } from "./components/CFA/ListeContratsigned";
+import { ListeContratEmployeurSigned } from "./vues/Employeur/ListeContratEmployeurSigned";
 import { ContratsignedCerfa } from "./vues/CFA/ContratsignedCFA";
 import CreationcontratApp from "./vues/CFA/CreationContratAppren";
+import { ListeContratEmployeursigned } from "./components/Employeur/ListeContratsigned";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,13 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {index:true, element:<ContratsignedCerfa />}
+    ]
+  },
+  {
+    path: `/contrat-employeur/signed`,
+    element: <RootLayout/>,
+    children: [
+      {index:true, element:<ListeContratEmployeurSigned />}
     ]
   },
   {

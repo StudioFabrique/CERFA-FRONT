@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { CircleCheck, HardDriveDownload } from 'lucide-react';
-import token from "../../services/token-service"
-import { useLocation, useNavigate } from 'react-router-dom';
 import { Tooltip } from '@mui/material';
 
 interface Contrat{
@@ -19,7 +17,7 @@ interface Contrat{
 
 }
 
-export function ListeContratCerf() {
+export function ListeContratEmployeu() {
     const [contracts, setContracts] = useState<Contrat []>([]);
     const [error, setError] = useState<string | null>(null);
 
@@ -38,7 +36,8 @@ export function ListeContratCerf() {
                 toast.error("Votre session a expiré !", {duration: 4000,className:"bg-grey-200 font-bold rounded-xl text-blue-600"})
                 throw new Error('No token found');
             }
-            const response = await axios.get(`${API_URL}/accueil/contracts/Employeur`, {
+            const id = JSON.parse(user).id
+            const response = await axios.get(`${API_URL}/accueil/contrats/Employeur/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
@@ -108,32 +107,32 @@ export function ListeContratCerf() {
                         {contracts.map(contract => (
                         <tr key={contract.id} className='border-t-2 align-text text-center'>
                             <td className='px-6 py-4'>
-                            <input  type="checkbox" className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"></input>
+                                <input  type="checkbox" className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"></input>
                             </td>
                             <td className='px-6 py-4'>
-                                {contract.nom_usage}
+                                {contract.nom_usage ?? "x"}
                             </td>
                             <td className='px-6 py-4'>
-                                {contract.prenom}
+                                {contract.prenom ?? "x"}
                             </td>
                             <td className='px-6 py-4'>
-                                {contract.date_naissance}
+                                {contract.date_naissance ?? "x"}
                             </td>
                             <td className='px-6 py-4'>
-                                
+                                x
                             </td>
                             <td className='px-6 py-4'>
-                                
+                                x
                             </td>
                             <td className='px-6 py-4'>
-                                {contract.nom_entreprise}
+                                {contract.nom_entreprise ?? "x"}
                             </td>
                             <td className='px-6 py-4'>
-                                {contract.type_contrat}
+                                {contract.type_contrat ?? "x"}
                             </td>
                             <td className='px-6 pt-7 flex justify-center'>
                                 <Tooltip title="Signature Employeur">
-                                    <CircleCheck color={contract.signature_employeur ? "#4aea10" : "#000000"} />
+                                    <CircleCheck color={contract.signature_employeur ? "#4aea10" : "#000000" ?? "x"} />
                                 </Tooltip>
                             </td>
                             <td className='px-16 py-4'>

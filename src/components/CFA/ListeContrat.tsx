@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { CircleCheck, HardDriveDownload } from 'lucide-react';
 import token from "../../services/token-service"
-import { useLocation, useNavigate } from 'react-router-dom';
 import { Tooltip } from '@mui/material';
 
 interface Contrat{

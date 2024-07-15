@@ -15,7 +15,8 @@ const login = async(email: string, password: string, rememberMe : boolean) => {
         if (response.data.access) {
             localStorage.setItem('user', JSON.stringify({
                 token:response.data.access,
-                role:response.data.role
+                role:response.data.role,
+                id:response.data.id
             }));
             return true;
         }  
