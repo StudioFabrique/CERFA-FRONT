@@ -17,7 +17,6 @@ export function PageHeaderEmployeur(){
     const [nombreContratNonNull, setNombreContratNonNull] = useState<string>();
     //Nombre total de contrat non Signé
     const [nombreContratNull, setNombreContratNull] = useState<string>();
-    const [error, setError] = useState<string | null>(null);
 
 
   const fetchNombreContracts = async () => {
@@ -49,7 +48,7 @@ export function PageHeaderEmployeur(){
         }
         setNombreContratNonNull(response.data.nombre_non_null)
         setNombreContratNull(response.data.nombre_null)
-        setNombreContratTotal(response.data.nombre_total);
+        setNombreContratTotal(response.data.nombre_total)
         console.log(response.data);
     } catch (error: any) {
         if(error.response && error.response.status === 401){
@@ -57,7 +56,6 @@ export function PageHeaderEmployeur(){
             toast.error("Votre session a expiré !", {duration: 4000,className:"bg-grey-200 font-bold rounded-xl text-blue-600"})
         }else {
             console.log("Failed to fetch contracts: ", error.response ? error.response.data : error.message);
-            setError(error.response ? error.response.data.detail : error.message);
         }
     }
 };

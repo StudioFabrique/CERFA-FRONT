@@ -21,7 +21,6 @@ interface ContratUnsigned{
 export function ListeContratCerfaUnsigned() {
 
     const [contractsUsigned, setContractsUsigned] = useState<ContratUnsigned []>([]);
-    const [error, setError] = useState<string | null>(null);
 
     const fetchContractsUsigned = async () => {
         try {
@@ -57,7 +56,7 @@ export function ListeContratCerfaUnsigned() {
                 toast.error("Votre session a expiré !", {duration: 4000,className:"bg-grey-200 font-bold rounded-xl text-blue-600"})
             }else {
                 console.log("Failed to fetch contracts: ", error.response ? error.response.data : error.message);
-                setError(error.response ? error.response.data.detail : error.message);
+                
             }
         }
     };
