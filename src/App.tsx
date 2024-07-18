@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import RootLayout from "./vues/rootlayout";
+import { Authentification } from "./vues/Authentification";
+import { ListeContratCerfa } from "./vues/CFA/ListeContratCFA";
+import { ListeContratEmployeur } from "./vues/Employeur/ListeContratEmployeur";
+import { Toaster } from "react-hot-toast";
+import { ContratUnsignedCerfa } from "./vues/CFA/ContratUnsignedCFA";
+import { ListeContratEmployeurSigned } from "./vues/Employeur/ListeContratEmployeurSigned";
+import { ContratsignedCerfa } from "./vues/CFA/ContratsignedCFA";
+import CreationcontratApp from "./vues/CFA/CreationContratAppren";
+import { ListeContratEmployeursigned } from "./components/Employeur/ListeContratsigned";
 
-function App() {
-  const [count, setCount] = useState(0)
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {index: true, element:<Authentification />}
+    ]
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+  },
+  {path:"/accueil-cerfa",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<ListeContratCerfa />}
+    ]
+  },
+  {path:"/accueil-employeur",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<ListeContratEmployeur />}
+    ]
+  },
+  {
+    path: "/contrat-cerfa/unsigned",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<ContratUnsignedCerfa />}
+    ]
+  },
+  {
+    path: "/contrat-cerfa/signed",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<ContratsignedCerfa />}
+    ]
+  },
+  {
+    path: `/contrat-employeur/signed`,
+    element: <RootLayout/>,
+    children: [
+      {index:true, element:<ListeContratEmployeurSigned />}
+    ]
+  },
+  {
+    path: "/nouveau-contrat/Apprentissage",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<CreationcontratApp />}
+    ]
+  }
+]);
+
+const App = () => {return <div><Toaster/> <RouterProvider router={router}></RouterProvider></div>}
 
 export default App
