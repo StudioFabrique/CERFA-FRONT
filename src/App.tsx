@@ -8,7 +8,7 @@ import { ContratUnsignedCerfa } from "./vues/CFA/ContratUnsignedCFA";
 import { ListeContratEmployeurSigned } from "./vues/Employeur/ListeContratEmployeurSigned";
 import { ContratsignedCerfa } from "./vues/CFA/ContratsignedCFA";
 import CreationcontratApp from "./vues/CFA/CreationContratAppren";
-import { ListeContratEmployeursigned } from "./components/Employeur/ListeContratsigned";
+import { ListeContratEmployeurUnSigned } from "./vues/Employeur/ListeContratEmployeurUnsigned";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +50,13 @@ const router = createBrowserRouter([
     element: <RootLayout/>,
     children: [
       {index:true, element:<ListeContratEmployeurSigned />}
+    ]
+  },
+  {
+    path: `/contrat-employeur/unsigned`,
+    element: <RootLayout/>,
+    children: [
+      {index:true, element:<ListeContratEmployeurUnSigned />}
     ]
   },
   {

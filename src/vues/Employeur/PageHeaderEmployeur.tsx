@@ -31,7 +31,7 @@ export function PageHeaderEmployeur(){
         }
         const { token } = JSON.parse(user);
         if (!token) {
-            window.location.href="/"
+            window.location.href="/" 
             toast.error("Votre session a expiré !", {duration: 4000,className:"bg-grey-200 font-bold rounded-xl text-blue-600"})
             throw new Error('No token found');
         }
