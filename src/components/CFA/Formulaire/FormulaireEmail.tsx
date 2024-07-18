@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 
 export function FormulaireEmail(){
     return <div className='flex flex-col items-center'>

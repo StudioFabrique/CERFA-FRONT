@@ -19,7 +19,6 @@ export function PageHeaderCerfa(){
     const [nombreContratNonNull, setNombreContratNonNull] = useState<string>();
     //Nombre total de contrat non Signé
     const [nombreContratNull, setNombreContratNull] = useState<string>();
-    const [error, setError] = useState<string | null>(null);
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
@@ -58,8 +57,7 @@ export function PageHeaderCerfa(){
             window.location.href="/"
             toast.error("Votre session a expiré !", {duration: 4000,className:"bg-grey-200 font-bold rounded-xl text-blue-600"})
         }else {
-            console.log("Failed to fetch contracts: ", error.response ? error.response.data : error.message);
-            setError(error.response ? error.response.data.detail : error.message);
+            console.log("Failed to fetch contracts: ", error.response ? error.response.data : error.message)
         }
     }
 };

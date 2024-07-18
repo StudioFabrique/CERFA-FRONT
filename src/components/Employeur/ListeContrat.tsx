@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { CircleCheck, HardDriveDownload } from 'lucide-react';
@@ -19,7 +19,6 @@ interface Contrat{
 
 export function ListeContratEmployeu() {
     const [contracts, setContracts] = useState<Contrat []>([]);
-    const [error, setError] = useState<string | null>(null);
 
     const fetchContracts = async () => {
         try {
@@ -56,7 +55,6 @@ export function ListeContratEmployeu() {
                 toast.error("Votre session a expiré !", {duration: 4000,className:"bg-grey-200 font-bold rounded-xl text-blue-600"})
             }else {
                 console.log("Failed to fetch contracts: ", error.response ? error.response.data : error.message);
-                setError(error.response ? error.response.data.detail : error.message);
             }
         }
     };
