@@ -9,6 +9,10 @@ import { ListeContratEmployeurSigned } from "./vues/Employeur/ListeContratEmploy
 import { ContratsignedCerfa } from "./vues/CFA/ContratsignedCFA";
 import CreationcontratApp from "./vues/CFA/CreationContratAppren";
 import { ListeContratEmployeurUnSigned } from "./vues/Employeur/ListeContratEmployeurUnsigned";
+import { EditEmployeur } from "./vues/Edit/EditEmployeur";
+import { EditCFA } from "./vues/Edit/EditCFA";
+import { Getuser } from "./vues/Edit/GetUser";
+import { Edituser } from "./vues/Edit/EditUser";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +69,31 @@ const router = createBrowserRouter([
     children: [
       {index:true, element:<CreationcontratApp />}
     ]
-  }
+  }, 
+  {path:"/get-user",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<Getuser />}
+    ]
+  },
+  {path:"/edit-CFA",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<EditCFA />}
+    ]
+  },
+  {path:"/edit-entreprise",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<EditEmployeur />}
+    ]
+  },
+  {path:"/edit/user/:id",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<Edituser />}
+    ]
+  },
 ]);
 
 const App = () => {return <div><Toaster/> <RouterProvider router={router}></RouterProvider></div>}
