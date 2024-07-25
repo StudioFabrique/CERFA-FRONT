@@ -18,7 +18,13 @@ export function PageHeaderEmployeur(){
     //Nombre total de contrat non Signé
     const [nombreContratNull, setNombreContratNull] = useState<string>();
 
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
 
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!isDropdownOpen);
+        };
+        
   const fetchNombreContracts = async () => {
     try {
         const API_URL = "http://localhost:8000";
@@ -74,9 +80,16 @@ useEffect(() => {
                     <a className='px-5 pt-3 hover:text-orange-400 text-xl'>Historique</a>
                     <a className='px-5 pt-3 hover:text-orange-400 text-xl'>Work</a>
                     <div className='pt-4 pl-5'>
-                        <button>
+                        <button onClick={toggleDropdown}>
                             <ChevronDown />
                         </button>
+                        {isDropdownOpen && (
+                            <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-10 p-2 w-[500%] text-center">
+                                <a href="/get-user" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Modifier les utilisateurs</a>
+                                <a href="/edit-CFA" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Modifier le CFA</a>
+                                <a href="/edit-entreprise" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Modifier une Entreprise</a>
+                            </div>
+                        )}
                     </div>
                     <button className='my-2 py-1 px-2 mb-10 ml-3'>
                         <CirclePower onClick={authService.logout}/>

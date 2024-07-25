@@ -95,7 +95,7 @@ useEffect(() => {
                 <div className='flex font-semibold pt-2'>
                     <a className={`px-5 pt-3 text-xl ${location.pathname === '/accueil-cerfa' ? 'text-orange-400' : 'hover:text-orange-400'}`}  href='/accueil-cerfa '>Accueil</a>
                     <a className='px-5 pt-3 hover:text-orange-400 text-xl'>Historique</a>
-                    <a className='px-5 pt-3 hover:text-orange-400 text-xl'>Work</a>
+                    <a className='px-5 pt-3 hover:text-orange-400 text-xl'>Ajouter</a>
                     <div className='relative pt-4 pl-5' ref={dropdownRef}>
                         <button onClick={toggleDropdown}>
                             <ChevronDown />
