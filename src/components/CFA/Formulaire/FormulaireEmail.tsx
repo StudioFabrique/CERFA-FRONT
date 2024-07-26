@@ -1,5 +1,3 @@
-
-
 export function FormulaireEmail(){
     return <div className='flex flex-col items-center'>
             <div className='flex flex-col items-center border-2 w-[40%] rounded-l shadow-md'>

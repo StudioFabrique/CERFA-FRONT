@@ -92,11 +92,12 @@ useEffect(() => {
         <div>
             <div className="flex justify-between pl-20 pr-10 pt-20  ">
                     <img src={Cerfa} className=' h-[80px] mb-3'></img>
-                <div className='flex font-semibold pt-2'>
+                <div className='flex font-semibold pt-2 '>
                     <a className={`px-5 pt-3 text-xl ${location.pathname === '/accueil-cerfa' ? 'text-orange-400' : 'hover:text-orange-400'}`}  href='/accueil-cerfa '>Accueil</a>
                     <a className='px-5 pt-3 hover:text-orange-400 text-xl'>Historique</a>
-                    <a className='px-5 pt-3 hover:text-orange-400 text-xl'>Ajouter</a>
+                    
                     <div className='relative pt-4 pl-5' ref={dropdownRef}>
+                        
                         <button onClick={toggleDropdown}>
                             <ChevronDown />
                         </button>
@@ -105,6 +106,7 @@ useEffect(() => {
                                 <a href="/get-user" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Modifier les utilisateurs</a>
                                 <a href="/edit-CFA" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Modifier le CFA</a>
                                 <a href="/edit-entreprise" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Modifier une Entreprise</a>
+                                <a href="/create/utilisateur" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Créer un utilisateur</a>
                             </div>
                         )}
                     </div>

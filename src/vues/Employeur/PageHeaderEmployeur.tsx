@@ -24,7 +24,7 @@ export function PageHeaderEmployeur(){
     const toggleDropdown = () => {
         setDropdownOpen(!isDropdownOpen);
         };
-        
+
   const fetchNombreContracts = async () => {
     try {
         const API_URL = "http://localhost:8000";
@@ -86,8 +86,7 @@ useEffect(() => {
                         {isDropdownOpen && (
                             <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-10 p-2 w-[500%] text-center">
                                 <a href="/get-user" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Modifier les utilisateurs</a>
-                                <a href="/edit-CFA" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Modifier le CFA</a>
-                                <a href="/edit-entreprise" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Modifier une Entreprise</a>
+                                
                             </div>
                         )}
                     </div>

@@ -24,7 +24,7 @@ export function Editemployeur(){
     const [employeur, setEmployeur] = useState<Partial<Employeur>>({});
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchEmployeur = async () => {
             try {
                 const API_URL = "http://localhost:8000";
                 const currentuser = localStorage.getItem('user');
@@ -59,7 +59,7 @@ export function Editemployeur(){
                 }
             }
         }
-        fetchUser();
+        fetchEmployeur();
     }, [id]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -100,10 +100,10 @@ export function Editemployeur(){
               code_postal: employeur?.code_postal,
               commune: employeur?.commune,
               code_IDCC: employeur?.code_IDCC,
-              effectif: employeur?.effectif,
+              effectif: String(employeur?.effectif),
               code_activite_NAF: employeur?.code_activite_NAF,
               courriel: employeur?.courriel,
-              telephone: employeur?.telephone
+              telephone: employeur?.telephone,
             },
             {
               headers: {

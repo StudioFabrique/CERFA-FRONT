@@ -14,6 +14,7 @@ import { EditCFA } from "./vues/Edit/EditCFA";
 import { Getuser } from "./vues/Edit/GetUser";
 import { Edituser } from "./vues/Edit/EditUser";
 import { Editemployeur } from "./vues/Edit/EditEmployeur";
+import { CreationUtilisateur } from "./vues/CFA/Creation/CreationUtilisateur";
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,12 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {index:true, element:<Editemployeur />}
+    ]
+  },
+  {path:"/create/utilisateur",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<CreationUtilisateur />}
     ]
   },
 ]);
