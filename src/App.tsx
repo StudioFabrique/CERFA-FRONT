@@ -9,6 +9,12 @@ import { ListeContratEmployeurSigned } from "./vues/Employeur/ListeContratEmploy
 import { ContratsignedCerfa } from "./vues/CFA/ContratsignedCFA";
 import CreationcontratApp from "./vues/CFA/CreationContratAppren";
 import { ListeContratEmployeurUnSigned } from "./vues/Employeur/ListeContratEmployeurUnsigned";
+import { GetEmployeur } from "./vues/Edit/GetEmployeur";
+import { EditCFA } from "./vues/Edit/EditCFA";
+import { Getuser } from "./vues/Edit/GetUser";
+import { Edituser } from "./vues/Edit/EditUser";
+import { Editemployeur } from "./vues/Edit/EditEmployeur";
+import { CreationUtilisateur } from "./vues/CFA/Creation/CreationUtilisateur";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +71,43 @@ const router = createBrowserRouter([
     children: [
       {index:true, element:<CreationcontratApp />}
     ]
-  }
+  }, 
+  {path:"/get-user",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<Getuser />}
+    ]
+  },
+  {path:"/edit-CFA",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<EditCFA />}
+    ]
+  },
+  {path:"/edit-entreprise",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<GetEmployeur />}
+    ]
+  },
+  {path:"/edit/user/:id",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<Edituser />}
+    ]
+  },
+  {path:"/edit/employeur/:id",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<Editemployeur />}
+    ]
+  },
+  {path:"/create/utilisateur",
+    element: <RootLayout />,
+    children: [
+      {index:true, element:<CreationUtilisateur />}
+    ]
+  },
 ]);
 
 const App = () => {return <div><Toaster/> <RouterProvider router={router}></RouterProvider></div>}
